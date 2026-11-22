@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, booleanAttribute, input } from '@angular/core';
 import { Icon } from '../icon/icon';
 import type { IconName } from '../icon/icons';
 
@@ -62,5 +62,5 @@ export type TagTone = 'buy' | 'rent' | 'paid' | 'neutral' | 'plain';
 export class Tag {
   readonly tone = input<TagTone>('neutral');
   readonly icon = input<IconName>();
-  readonly small = input(false);
+  readonly small = input(false, { transform: booleanAttribute });
 }

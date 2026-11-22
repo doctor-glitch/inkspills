@@ -1,0 +1,274 @@
+<div class="page">
+  <header class="intro">
+    <h1 class="h1">Shared components</h1>
+    <p>
+      Temporary review page (step 1a). Delete before release. Resize the window to check 375, 768,
+      1024 and 1440 px. Last event: <strong>{{ lastEvent() }}</strong>
+    </p>
+  </header>
+
+  <section>
+    <h2>Logo and icons</h2>
+    <div class="row">
+      <img src="/assets/logo.svg" alt="InkSpills" width="137" height="32" />
+      <span class="on-dark"
+        ><img src="/assets/logo-on-dark.svg" alt="InkSpills on dark" width="137" height="32"
+      /></span>
+      <img src="/assets/logo-mark.svg" alt="Logo mark" width="28" height="28" />
+    </div>
+    <ul class="icons" role="list">
+      @for (name of iconNames; track name) {
+        <li>
+          <app-icon [name]="name" [size]="24" /><code>{{ name }}</code>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <section>
+    <h2>Demo banner</h2>
+    <app-demo-banner />
+  </section>
+
+  <section>
+    <h2>Buttons</h2>
+    @for (size of ['sm', 'md', 'lg']; track size) {
+      <div class="row">
+        <code class="label">{{ size }}</code>
+        <button appButton="buy" [size]="$any(size)">Buy now</button>
+        <button appButton="rent" [size]="$any(size)">Rent now</button>
+        <button appButton="secondary" [size]="$any(size)">Secondary action</button>
+        <button appButton="dark" [size]="$any(size)">Dark surface action</button>
+      </div>
+    }
+    <div class="row">
+      <code class="label">states</code>
+      <button appButton="buy" disabled>Disabled</button>
+      <button appButton="rent" disabled>Disabled</button>
+      <button appButton="buy" loading>Paying…</button>
+      <a appButton="secondary" href="/books">Link styled as button</a>
+    </div>
+    <div class="row on-dark">
+      <button appButton="buy" size="lg">Browse books</button>
+      <button appButton="ghost-dark" size="lg">Contact us</button>
+    </div>
+    <div class="narrow"><button appButton="buy" size="lg" block>Proceed to checkout</button></div>
+  </section>
+
+  <section>
+    <h2>Price pill</h2>
+    <div class="row">
+      <app-price-pill [buyCents]="2999" [rentWeekCents]="299" />
+      <app-price-pill [buyCents]="199" [rentWeekCents]="49" />
+      <app-price-pill [buyCents]="4999" />
+      <app-price-pill [rentWeekCents]="599" />
+    </div>
+  </section>
+
+  <section>
+    <h2>Tags</h2>
+    <div class="row">
+      <app-tag tone="buy">Purchased</app-tag>
+      <app-tag tone="rent" icon="clock">Ends in 10 days</app-tag>
+      <app-tag tone="paid">Paid</app-tag>
+      <app-tag tone="neutral">Paid $12.99</app-tag>
+      <app-tag tone="rent">Rented</app-tag>
+      <app-tag tone="buy">Bought</app-tag>
+      <app-tag tone="buy" small>Buy</app-tag>
+      <app-tag tone="rent" small>Rent, 1 week</app-tag>
+    </div>
+    <div class="row tint-blue">
+      <app-tag tone="plain">Buy</app-tag>
+      <span>plain tag on a tinted panel</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Text input</h2>
+    <div class="grid-2">
+      <app-text-input label="Name" placeholder="Alex Morgan" [(value)]="plain" />
+      <app-text-input
+        label="Email"
+        type="email"
+        value="alex.morgan@example.com"
+        hint="Click in to see the focus ring."
+      />
+      <app-text-input
+        label="Email"
+        type="email"
+        value="alex.morgan@"
+        error="Enter a full email address, like name@example.com."
+      />
+      <app-text-input label="Phone" value="+1 (519) 555 0142" disabled />
+      <app-text-input label="Password" type="password" value="correct horse" />
+      <app-text-input label="Confirm password" type="password" placeholder="Repeat new password" />
+    </div>
+    <p class="note">Typed value: "{{ plain() }}"</p>
+
+    <h3>Signal Forms (errors show after you leave a field)</h3>
+    <form class="grid-2" (submit)="$event.preventDefault()">
+      <app-text-input
+        label="Email"
+        type="email"
+        autocomplete="email"
+        [formField]="loginForm.email"
+      />
+      <app-text-input
+        label="Password"
+        type="password"
+        autocomplete="current-password"
+        [formField]="loginForm.password"
+      />
+    </form>
+    <p class="note">Form valid: {{ loginForm().valid() }} · model: {{ loginModel() | json }}</p>
+  </section>
+
+  <section>
+    <h2>Checkbox and toggle</h2>
+    <div class="stack">
+      <app-checkbox [(checked)]="keepSignedIn"
+        >Keep me signed in ({{ keepSignedIn() }})</app-checkbox
+      >
+      <app-checkbox
+        >I agree to the <a href="/terms">terms</a> and
+        <a href="/rental-policy">rental policy</a></app-checkbox
+      >
+      <app-checkbox [checked]="true" disabled>Disabled, checked</app-checkbox>
+      <app-checkbox disabled>Disabled, unchecked</app-checkbox>
+    </div>
+    <div class="row on-dark">
+      <app-checkbox tone="dark">Include promotional offers</app-checkbox>
+      <app-checkbox tone="dark" [checked]="true">Include price drops</app-checkbox>
+    </div>
+    <div class="narrow panel">
+      <app-toggle [(checked)]="reminders" describedBy="reminders-help">
+        <strong>Rental reminders</strong>
+        <span id="reminders-help" class="note">Email me two days before a rental ends.</span>
+      </app-toggle>
+      <app-toggle [checked]="false">Off</app-toggle>
+      <app-toggle [checked]="true" disabled>Disabled</app-toggle>
+    </div>
+  </section>
+
+  <section>
+    <h2>Rating stars</h2>
+    <div class="row">
+      <app-rating-stars [value]="4.5" [size]="16" />
+      <app-rating-stars [value]="3" [size]="16" />
+      <app-rating-stars [value]="0.7" [size]="16" />
+      <app-rating-stars [value]="4.8" compact />
+    </div>
+    <div class="row">
+      <app-rating-stars editable label="Rate this book" [size]="24" [(value)]="myRating" />
+      <span class="note">Your rating: {{ myRating() }}</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Book card</h2>
+    <div class="cards">
+      <app-book-card
+        [book]="soul"
+        showStaffPick
+        priority
+        (addToCart)="added($event)"
+        (wishlistToggle)="toggleWish($event)"
+      />
+      <app-book-card
+        [book]="money"
+        [wishlisted]="wishlist().includes(money.id)"
+        (addToCart)="added($event)"
+        (wishlistToggle)="toggleWish($event)"
+      />
+      <app-book-card
+        [book]="longTitle"
+        (addToCart)="added($event)"
+        (wishlistToggle)="toggleWish($event)"
+      />
+    </div>
+  </section>
+
+  <section>
+    <h2>Book rail</h2>
+    <app-book-rail
+      heading="New arrivals"
+      subtitle="Fresh on the shelf this week."
+      seeAllLink="/books"
+      [books]="newArrivals"
+      [wishlistIds]="wishlist()"
+      (addToCart)="added($event)"
+      (wishlistToggle)="toggleWish($event)"
+    />
+    <app-book-rail
+      heading="Recommended books"
+      subtitle="Picked by our staff for slow evenings."
+      [books]="longRail"
+      [wishlistIds]="wishlist()"
+      showStaffPick
+      (addToCart)="added($event)"
+      (wishlistToggle)="toggleWish($event)"
+    />
+  </section>
+
+  <section>
+    <h2>Genre chips</h2>
+    <app-genre-chips [genres]="genres" [(selected)]="genre" />
+    <p class="note">
+      Selected: "{{ genre() || 'All' }}" (Tab in, then use the arrow keys and Enter)
+    </p>
+  </section>
+
+  <section>
+    <h2>Progress stepper</h2>
+    <div class="stack">
+      <app-progress-stepper [current]="0" />
+      <app-progress-stepper [current]="1" />
+      <app-progress-stepper [current]="3" />
+    </div>
+  </section>
+
+  <section>
+    <h2>Countdown bar (clock pinned to Nov 21, 2026)</h2>
+    <div class="grid-2">
+      @for (r of rentals; track r.id) {
+        <div>
+          <p class="note">{{ r.title }}</p>
+          <app-countdown-bar [startsAt]="r.startsAt" [endsAt]="r.endsAt" />
+        </div>
+      }
+      <div>
+        <p class="note">Ended rental</p>
+        <app-countdown-bar startsAt="2026-10-01T12:00:00.000Z" endsAt="2026-10-29T12:00:00.000Z" />
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Toast</h2>
+    <div class="row">
+      <button appButton="rent" (click)="rentToast()">Rent toast</button>
+      <button appButton="buy" (click)="added(soul)">Buy toast</button>
+      <button appButton="secondary" (click)="plainToast()">Sticky toast, no image</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Dialog</h2>
+    <div class="row">
+      <button appButton="secondary" (click)="confirmOpen.set(true)">Open confirm dialog</button>
+      <button appButton="secondary" (click)="showLoggingOut()">
+        Open non-dismissible dialog (2.5 s)
+      </button>
+    </div>
+    <app-dialog heading="Log out?" [(open)]="confirmOpen">
+      Your cart and rentals are saved to your account.
+      <div dialog-actions>
+        <button appButton="secondary" (click)="confirmOpen.set(false)">Cancel</button>
+        <button appButton="dark" (click)="confirmOpen.set(false)">Log out</button>
+      </div>
+    </app-dialog>
+    <app-dialog heading="Logging out. Please wait…" [dismissible]="false" [(open)]="loggingOutOpen">
+      Your cart and rentals are saved to your account.
+    </app-dialog>
+  </section>
+</div>

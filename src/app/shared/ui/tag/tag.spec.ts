@@ -5,7 +5,7 @@ import type { IconName } from '../icon/icons';
 
 @Component({
   imports: [Tag],
-  template: `<app-tag [tone]="tone()" [icon]="icon()">Expire in 10 days</app-tag>`,
+  template: `<app-tag [tone]="tone()" [icon]="icon()">Ends in 10 days</app-tag>`,
 })
 class Host {
   tone = signal<TagTone>('rent');
@@ -17,7 +17,7 @@ describe('Tag', () => {
     const fixture = TestBed.createComponent(Host);
     fixture.detectChanges();
     const tag = fixture.nativeElement.querySelector('app-tag') as HTMLElement;
-    expect(tag.textContent?.trim()).toBe('Expire in 10 days');
+    expect(tag.textContent?.trim()).toBe('Ends in 10 days');
     expect(tag.classList).toContain('tag--rent');
 
     fixture.componentInstance.tone.set('paid');

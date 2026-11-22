@@ -7,7 +7,8 @@
       "'Rental reminder ... before Endurance is due' -> '... before your access to Endurance ends'",
       "'Ship to this address too' removed from Checkout",
       "'Rented until <date>' (Order completed) -> 'Access until <date>'",
-      "Format 'Paperback' -> 'EPUB'"
+      "Format 'Paperback' -> 'EPUB'",
+      "'Expire in N days' -> 'Ends in N days' (rental tags, account pages and reminder emails)"
     ],
     "placeholders": "{name} style tokens are filled in by the page."
   },
@@ -320,7 +321,7 @@
       "title": "Rented books",
       "subtitle": "{count} active rentals. The next one ends in {days} days.",
       "tabs": ["Active", "Returned"],
-      "endsIn": "Expire in {days} days",
+      "endsIn": "Ends in {days} days",
       "paid": "Paid {price}",
       "period": "Rental period",
       "daysLeft": "{left} of {total} days left",

@@ -6,7 +6,7 @@
       "Titles, authors, ratings and prices are exactly as the design shows them.",
       "Any value not shown in the design is invented: such books have placeholder: true and list the invented fields in placeholderFields. Replace them in step 2a.",
       "fileFormat is EPUB for every book (the design said Paperback; every book is an ebook).",
-      "Sculpture shows $1.99 to buy on Home but $11.99 in the Cart and Order artboards. The catalog uses the Home price."
+      "Prices are sample values. Sculpture is $1.99 everywhere (the Home price)."
     ]
   },
   "genres": [

@@ -43,3 +43,16 @@ The full plan is in `docs/PLAN.md`. Read the relevant sections before starting e
 - Pricing, tax and rental rules live in `supabase/functions/_shared/` and are unit-tested.
 - Layouts must work at 375, 768, 1024 and 1440 px. Desktop matches the XD artboards; tablet and mobile follow PLAN.md section 4.
 - Keep changes small and focused; do not refactor code outside the current step.
+
+## Scope rules
+- Do only what the current step's prompt lists. If something else seems needed, ask first and wait.
+- No new dependencies, files, folders or docs beyond the step without asking first.
+- Do not refactor, rename or restyle code outside the current step.
+- Do not start subagents unless I ask.
+- While working, run only the tests for what you changed; run the full test suite and build once at the end.
+- Ask at most one round of questions per step, and keep the final summary short: what changed, what's left, decisions needed.
+
+## Skills
+- Use a skill only when I name it in the prompt, or when it clearly fits the current step and you tell me which one you are using.
+- Do not run process-heavy skills (brainstorming, multi-agent planning, subagent-driven development) for this project; docs/PLAN.md and the step prompts are already the plan.
+- Apply the karpathy-guidelines skill on every coding step.

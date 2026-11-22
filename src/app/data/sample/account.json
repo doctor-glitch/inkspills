@@ -4,7 +4,7 @@
     "designNow": "2026-11-21T12:00:00.000Z",
     "notes": [
       "Dates are absolute, relative to designNow. Sample services in later steps may shift them so countdowns stay current.",
-      "The order line for Sculpture is $11.99 as drawn in the Order completed artboard, which differs from the catalog price ($1.99).",
+      "Prices are sample values. Order lines use catalog prices and totals are recomputed from them, so they do not match the design's totals.",
       "Invented values are listed in placeholderFields."
     ]
   },
@@ -61,10 +61,10 @@
       "id": "5674543524",
       "userId": "user-alex",
       "status": "paid",
-      "subtotalCents": 4996,
-      "taxCents": 649,
+      "subtotalCents": 3996,
+      "taxCents": 519,
       "discountCents": 0,
-      "totalCents": 5645,
+      "totalCents": 4515,
       "cardLast4": "0187",
       "items": [
         {
@@ -92,8 +92,8 @@
           "bookId": "book-sculpture",
           "mode": "buy",
           "weeks": null,
-          "unitCents": 1199,
-          "lineCents": 1199
+          "unitCents": 199,
+          "lineCents": 199
         }
       ],
       "createdAt": "2026-11-21T12:00:00.000Z"

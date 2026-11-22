@@ -39,6 +39,8 @@ paint order. Coordinates are in px relative to the artboard's top-left corner.
 ## Differences from the XD, on purpose
 
 - Ebook copy: "Ships in 2 days" → "Read instantly in your browser", "Due back" / "Rented until" → "Access until",
-  "Ship to this address too" removed, format "Paperback" → "EPUB".
+  "Ship to this address too" removed, format "Paperback" → "EPUB", "Expire in N days" → "Ends in N days"
+  (rental tags, account pages and reminder emails).
+- Prices are sample values: Sculpture is $1.99 everywhere and order totals are recomputed, so they differ from the drawn totals.
 - The wordmark font (Goudy Bookletter 1911, a stand-in for Poor Richard) is outlined into the SVG and never loaded.
 - Fonts are self-hosted with `@fontsource-variable/newsreader` and `@fontsource-variable/inter`.

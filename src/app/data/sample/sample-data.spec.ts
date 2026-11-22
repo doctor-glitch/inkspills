@@ -121,6 +121,17 @@ describe('sample account', () => {
     for (const c of account.cart) expect([1, 2, 3, 4]).toContain(c.weeks);
   });
 
+  it('prices order lines from the catalog', () => {
+    for (const o of account.orders) {
+      for (const i of o.items) {
+        const book = catalog.books.find((b) => b.id === i.bookId)!;
+        const expected = i.mode === 'buy' ? book.buyPriceCents : book.rentWeekCents * i.weeks!;
+        expect(i.unitCents, `${book.slug} unit`).toBe(expected);
+        expect(i.lineCents, `${book.slug} line`).toBe(expected);
+      }
+    }
+  });
+
   it('has order totals that add up in cents', () => {
     for (const o of account.orders) {
       const lines = o.items.reduce((sum, i) => sum + i.lineCents, 0);
@@ -147,5 +158,7 @@ describe('sample copy', () => {
     expect(text).not.toMatch(/Ships in|Due back|Ship to this address/);
     expect(text).toContain('Read instantly in your browser');
     expect(text).toContain('Access until {date}');
+    expect(text).toContain('Ends in {days} days');
+    expect(text).not.toMatch(/Expire in/);
   });
 });
