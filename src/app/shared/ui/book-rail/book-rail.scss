@@ -1,0 +1,108 @@
+@use 'breakpoints' as bp;
+
+:host {
+  display: block;
+  --rail-gap: var(--space-4);
+  --rail-visible: 1.6;
+
+  @include bp.up(tablet) {
+    --rail-gap: var(--space-6);
+    --rail-visible: 3;
+  }
+  @include bp.up(desktop) {
+    --rail-visible: 5;
+  }
+}
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.625rem, 1.5vw + 1rem, var(--text-h2));
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-h2);
+  line-height: 1.15;
+}
+
+.subtitle {
+  margin-top: var(--space-1);
+  font-size: var(--text-base);
+  color: var(--color-slate);
+}
+
+.controls {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.see-all {
+  margin-right: var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--color-blue-text);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.arrow {
+  display: none;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  color: var(--color-ink);
+
+  &:disabled {
+    color: var(--color-muted);
+    cursor: default;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      var(--focus-ring),
+      0 0 0 1px var(--color-blue);
+  }
+
+  @include bp.up(tablet) {
+    display: grid;
+  }
+}
+
+.track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(
+    (100% - (var(--rail-visible) - 1) * var(--rail-gap)) / var(--rail-visible)
+  );
+  gap: var(--rail-gap);
+  margin: 0;
+  padding: 0 0 var(--space-2);
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.item {
+  scroll-snap-align: start;
+  min-width: 0;
+}

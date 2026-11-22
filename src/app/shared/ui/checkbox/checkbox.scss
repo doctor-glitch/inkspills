@@ -1,0 +1,73 @@
+:host {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-slate);
+}
+
+// The native input covers the box so clicks and focus work natively.
+.native {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.box {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 1px solid var(--color-control-border);
+  border-radius: 5px;
+  background: var(--color-white);
+  color: var(--color-white);
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.native:checked + .box {
+  background: var(--color-blue);
+  border-color: var(--color-blue);
+}
+
+.native:focus-visible + .box {
+  box-shadow: var(--focus-ring);
+  border-color: var(--color-blue);
+}
+
+.native[aria-invalid='true'] + .box {
+  border-color: var(--color-red);
+  box-shadow: var(--error-ring);
+}
+
+.native:disabled + .box,
+.native:disabled ~ .text {
+  opacity: 0.55;
+}
+
+.text {
+  cursor: pointer;
+}
+
+:host(.dark) {
+  font-size: var(--text-xs);
+  color: var(--color-footer-link);
+
+  .box {
+    background: transparent;
+    border-color: var(--color-footer-checkbox-border);
+  }
+}

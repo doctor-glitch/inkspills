@@ -1,0 +1,35 @@
+@if (editable()) {
+  <fieldset class="editable">
+    <legend class="visually-hidden">{{ label() }}</legend>
+    @for (star of stars; track star) {
+      <label class="pick" [class.pick--on]="star <= value()">
+        <input
+          class="visually-hidden"
+          type="radio"
+          [name]="name"
+          [value]="star"
+          [checked]="star === value()"
+          (change)="choose(star)"
+        />
+        <app-icon name="star" [size]="size()" />
+        <span class="visually-hidden">{{ star }} {{ star === 1 ? 'star' : 'stars' }}</span>
+      </label>
+    }
+  </fieldset>
+} @else if (compact()) {
+  <span class="compact" role="img" [attr.aria-label]="ariaLabel()">
+    <app-icon class="gold" name="star" [size]="size()" />
+    <span aria-hidden="true">{{ display() }}</span>
+  </span>
+} @else {
+  <span class="row" role="img" [attr.aria-label]="ariaLabel()">
+    @for (fill of fills(); track $index) {
+      <span class="star">
+        <app-icon class="empty" name="star" [size]="size()" />
+        <span class="overlay" [style.width.%]="fill * 100">
+          <app-icon class="gold" name="star" [size]="size()" />
+        </span>
+      </span>
+    }
+  </span>
+}

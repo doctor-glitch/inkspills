@@ -1,0 +1,23 @@
+// Breakpoints from PLAN.md section 4. Mobile first.
+// mobile < 768, tablet 768 to 1199, desktop >= 1200 (drawn at 1440).
+// Use in components with: @use 'breakpoints' as bp;  @include bp.up(tablet) { ... }
+@use 'sass:map';
+
+$breakpoints: (
+  tablet: 768px,
+  laptop: 1024px,
+  desktop: 1200px,
+  wide: 1440px,
+);
+
+@mixin up($name) {
+  @media (min-width: map.get($breakpoints, $name)) {
+    @content;
+  }
+}
+
+@mixin down($name) {
+  @media (max-width: (map.get($breakpoints, $name) - 0.02px)) {
+    @content;
+  }
+}

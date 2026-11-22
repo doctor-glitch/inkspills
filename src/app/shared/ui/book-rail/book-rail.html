@@ -1,0 +1,50 @@
+<section class="rail" [attr.aria-labelledby]="headingId">
+  <header class="head">
+    <div class="titles">
+      <h2 class="heading" [id]="headingId">{{ heading() }}</h2>
+      @if (subtitle()) {
+        <p class="subtitle">{{ subtitle() }}</p>
+      }
+    </div>
+    <div class="controls">
+      @if (seeAllLink(); as link) {
+        <a class="see-all" [routerLink]="link" [queryParams]="seeAllQuery()">
+          See all<span class="visually-hidden"> {{ heading() }}</span>
+        </a>
+      }
+      <button
+        type="button"
+        class="arrow"
+        [disabled]="atStart()"
+        [attr.aria-label]="'Previous ' + heading()"
+        (click)="scroll(-1)"
+      >
+        <app-icon name="chevron-left" [size]="14" />
+      </button>
+      <button
+        type="button"
+        class="arrow"
+        [disabled]="atEnd()"
+        [attr.aria-label]="'Next ' + heading()"
+        (click)="scroll(1)"
+      >
+        <app-icon name="chevron-right" [size]="14" />
+      </button>
+    </div>
+  </header>
+
+  <ul #track class="track" role="list" (scroll)="updateEdges()">
+    @for (book of books(); track book.id; let i = $index) {
+      <li class="item">
+        <app-book-card
+          [book]="book"
+          [wishlisted]="isWishlisted(book.id)"
+          [showStaffPick]="showStaffPick()"
+          [priority]="priority() && i < 2"
+          (wishlistToggle)="wishlistToggle.emit($event)"
+          (addToCart)="addToCart.emit($event)"
+        />
+      </li>
+    }
+  </ul>
+</section>

@@ -1,0 +1,337 @@
+{
+  "_meta": {
+    "source": "design/InkSpills_UI_Revamp_2026.xd, extracted once in step 1a",
+    "ebookCopyChanges": [
+      "'Ships in 2 days' -> 'Read instantly in your browser'",
+      "'Due back <date>' -> 'Access until <date>'",
+      "'Rental reminder ... before Endurance is due' -> '... before your access to Endurance ends'",
+      "'Ship to this address too' removed from Checkout",
+      "'Rented until <date>' (Order completed) -> 'Access until <date>'",
+      "Format 'Paperback' -> 'EPUB'"
+    ],
+    "placeholders": "{name} style tokens are filled in by the page."
+  },
+  "demoBanner": "Demo store. Payments use Stripe test mode; no real charges.",
+  "header": {
+    "nav": ["Home", "Books", "About us"],
+    "searchPlaceholder": "Search books, authors or genres",
+    "account": "Account",
+    "cart": "Cart",
+    "help": "Help"
+  },
+  "footer": {
+    "tagline": "Buy the books you want to keep. Rent the ones you only need for a while.",
+    "columns": [
+      { "title": "Shop", "links": ["New arrivals", "Best sellers", "Staff picks", "Gift cards"] },
+      {
+        "title": "Support",
+        "links": ["Help Center", "How renting works", "Press Releases", "Refer and Earn"]
+      }
+    ],
+    "newsletter": {
+      "title": "Join our newsletter",
+      "body": "New arrivals and price drops, once a week.",
+      "placeholder": "E-mail",
+      "button": "Subscribe",
+      "promos": "Include promotional offers",
+      "priceDrops": "Include price drops"
+    },
+    "copyright": "Copyright © 2026 InkSpills. All rights reserved.",
+    "legal": ["Privacy", "Terms", "Cookies"]
+  },
+  "home": {
+    "hero": {
+      "title": "Explore the world of books.",
+      "body": "Buy the books you want to keep and rent the ones you only need for a while. Rented books show a clear countdown in your account, so you always know how many days you have left.",
+      "primary": "Browse books",
+      "secondary": "How renting works",
+      "ownFrom": "Own it from {price}",
+      "rentFrom": "Rent from {price}/week",
+      "staffPickLabel": "Staff pick this week"
+    },
+    "genreAll": "All",
+    "rails": {
+      "newArrivals": { "title": "New arrivals", "subtitle": "Fresh on the shelf this week." },
+      "recommended": {
+        "title": "Recommended books",
+        "subtitle": "Picked by our staff for slow evenings."
+      },
+      "bestSellers": {
+        "title": "Best sellers",
+        "subtitle": "What readers are buying and renting most."
+      }
+    },
+    "seeAll": "See all",
+    "staffPick": "Staff pick",
+    "buyRent": {
+      "buy": {
+        "tag": "Buy",
+        "title": "Keep it on your shelf",
+        "body": "Pay once and the book is yours for good. Find it any time under Purchased books."
+      },
+      "rent": {
+        "tag": "Rent",
+        "title": "Read it this week",
+        "body": "Rent for one to four weeks. We remind you two days before it ends, and you can extend or buy it with the rent already paid taken off."
+      }
+    }
+  },
+  "book": {
+    "by": "by",
+    "reviewsCount": "{count} reviews",
+    "buy": { "label": "Buy", "note": "Yours to keep", "cta": "Buy now" },
+    "rent": {
+      "label": "Rent",
+      "unit": "/week",
+      "note": "1 to 4 weeks, extend anytime",
+      "cta": "Rent now"
+    },
+    "perks": [
+      "Read instantly in your browser",
+      "Rent credit counts toward buying",
+      "Terms and conditions apply"
+    ],
+    "aboutBook": "About the book",
+    "aboutAuthor": "About the author",
+    "moreInformation": "More information",
+    "infoLabels": {
+      "pages": "Pages",
+      "genre": "Genre",
+      "year": "Year",
+      "publisher": "Publisher",
+      "category": "Category",
+      "format": "Format"
+    },
+    "readerReviews": "Reader reviews",
+    "outOf5": "out of 5, {count} reviews",
+    "writeReview": "Write a review",
+    "readAllReviews": "Read all {count} reviews",
+    "acquiredTags": { "rented": "Rented", "bought": "Bought" },
+    "readersAlsoLiked": "Readers also liked"
+  },
+  "toast": {
+    "addedToCart": "Added to cart",
+    "addedRent": "{title}, rent for {weeks}",
+    "addedBuy": "{title}, buy to keep",
+    "viewCart": "View cart"
+  },
+  "about": {
+    "title": "About us",
+    "intro": "InkSpills started with a simple question: why pay full price for a book you will only read once? We built a bookstore that lets you choose. Buy the books you want on your shelf for years, or rent the ones you need for a class, a trip or a single weekend.",
+    "buy": {
+      "title": "One clear price to buy",
+      "body": "Every book has a clear price to buy and keep. Your account lists everything you own under Purchased books."
+    },
+    "rent": {
+      "title": "One weekly price to rent",
+      "body": "Rent by the week. Your account keeps track of what you are renting and when each rental ends."
+    },
+    "vision": {
+      "title": "Our vision",
+      "body": "We want reading to be affordable and easy for everyone. Students, commuters and curious readers should be able to try more books without filling their shelves or emptying their wallets.",
+      "comingNext": "Coming next",
+      "items": [
+        {
+          "title": "More genres",
+          "body": "A wider shelf across fiction, non-fiction and textbooks."
+        },
+        {
+          "title": "Reading lists from our community",
+          "body": "Lists made by readers, for readers."
+        },
+        { "title": "A reminder before each rental ends", "body": "So no book goes back unread." }
+      ]
+    },
+    "cta": {
+      "title": "Find your next read",
+      "body": "Buy to keep or rent from $0.49 a week.",
+      "primary": "Browse books",
+      "secondary": "Contact us"
+    }
+  },
+  "auth": {
+    "collage": {
+      "login": "Break into the world of books.",
+      "signup": "Explore the world of books.",
+      "body": "Own the books you love. Rent the ones you only need for a week or two.",
+      "buyTag": "Buy to keep",
+      "rentTag": "Rent from $0.49/week"
+    },
+    "login": {
+      "title": "Log in",
+      "subtitle": "Welcome back. Your shelf and rentals are waiting.",
+      "email": "Email",
+      "emailPlaceholder": "name@example.com",
+      "emailInvalid": "Enter a full email address, like name@example.com.",
+      "password": "Password",
+      "keepSignedIn": "Keep me signed in",
+      "forgot": "Forgot password?",
+      "submit": "Log in",
+      "or": "or",
+      "google": "Continue with Google",
+      "apple": "Continue with Apple",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up"
+    },
+    "signup": {
+      "title": "Create your account",
+      "subtitle": "It takes a minute. Your first rental week is on us.",
+      "name": "Name",
+      "dateOfBirth": "Date of birth",
+      "dateOfBirthPlaceholder": "DD / MM / YYYY",
+      "email": "Email",
+      "password": "Password",
+      "passwordStrong": "Strong password. Add a symbol to make it even stronger.",
+      "confirmPassword": "Confirm password",
+      "agreeTo": "I agree to the",
+      "terms": "terms",
+      "and": "and",
+      "rentalPolicy": "rental policy",
+      "submit": "Create account",
+      "haveAccount": "Already have an account?",
+      "logIn": "Log in"
+    }
+  },
+  "steps": ["Cart", "Details and payment", "Done"],
+  "cart": {
+    "title": "Your books cart",
+    "buy": "Buy",
+    "rent": "Rent",
+    "yoursToKeep": "Yours to keep",
+    "accessUntil": "Access until {date}",
+    "perWeek": "{price} / week",
+    "weeks": ["1 week", "2 weeks", "3 weeks", "4 weeks"],
+    "saveForLater": "Save for later",
+    "continueShopping": "Continue shopping",
+    "countSummary": "{books} books, {rentals} rental",
+    "promoBanner": {
+      "title": "Add one more rental, get a week free",
+      "body": "Applies to any rental of 2 weeks or more.",
+      "link": "Browse rentals"
+    },
+    "savedForLater": "Saved for later"
+  },
+  "summary": {
+    "paymentSummary": "Payment summary",
+    "orderSummary": "Order summary",
+    "subtotal": "Sub total",
+    "hst": "HST (13%)",
+    "discount": "Discount",
+    "grandTotal": "Grand total",
+    "promoQuestion": "Have a promo code?",
+    "promoPlaceholder": "Enter code",
+    "apply": "Apply",
+    "proceed": "Proceed to checkout",
+    "pay": "Pay {total}",
+    "secure": "Secure checkout. Cancel a rental within 24 hours for a full refund."
+  },
+  "checkout": {
+    "title": "You're a few steps away!",
+    "loggedInAs": "Logged in as {email}",
+    "billing": {
+      "title": "Billing address",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "phone": "Phone",
+      "country": "Country",
+      "address": "Address",
+      "city": "City",
+      "postalCode": "Postal code"
+    },
+    "payment": {
+      "title": "Payment details",
+      "card": "Credit or debit card",
+      "wallet": "Mobile wallet",
+      "cardNumber": "Card number",
+      "nameOnCard": "Name on card",
+      "expiry": "Expiry",
+      "cvc": "CVC",
+      "saveCard": "Save this card for next time"
+    },
+    "backToCart": "Back to cart",
+    "tagBuy": "Buy",
+    "tagRent": "Rent, {weeks}"
+  },
+  "orderCompleted": {
+    "title": "Yay! you got some pages to read.",
+    "paymentCompleted": "Payment Completed",
+    "orderId": "Order ID : {id}",
+    "receiptSent": "Confirmation receipt is sent to registered e-mail.",
+    "primary": "View purchased / rented books",
+    "secondary": "Keep browsing",
+    "yourOrder": "Your order",
+    "purchased": "Purchased",
+    "rentedUntil": "Access until {date}",
+    "paidWith": "Paid with card ending {last4}",
+    "nextTitle": "What happens next",
+    "next": [
+      { "title": "Receipt on its way", "body": "Check your inbox for the full receipt." },
+      { "title": "Start reading", "body": "Your books are in your account now." },
+      {
+        "title": "Rental reminder",
+        "body": "We'll remind you 2 days before your access to {title} ends."
+      }
+    ],
+    "alsoLiked": "Readers who bought these also liked"
+  },
+  "account": {
+    "memberSince": "Member since {year}",
+    "nav": {
+      "details": "Personal details",
+      "purchased": "Purchased books",
+      "rented": "Rented books",
+      "wishlist": "Wishlist",
+      "contact": "Contact us",
+      "help": "Help",
+      "faq": "FAQ",
+      "logout": "Log out"
+    },
+    "details": {
+      "title": "Personal details",
+      "subtitle": "Update your name, email and password.",
+      "profile": "Profile",
+      "name": "Name",
+      "email": "Email",
+      "dateOfBirth": "Date of birth",
+      "phone": "Phone",
+      "changePassword": "Change password",
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm password",
+      "repeatPlaceholder": "Repeat new password",
+      "reminders": "Rental reminders",
+      "remindersBody": "Email me two days before a rental ends.",
+      "cancel": "Cancel",
+      "save": "Save changes"
+    },
+    "purchased": {
+      "title": "Purchased books",
+      "subtitle": "{count} books on your shelf.",
+      "sort": "Recently bought",
+      "tag": "Purchased",
+      "boughtOn": "Bought {date} for {price}",
+      "view": "View",
+      "receipt": "Receipt",
+      "emptyTitle": "Add to your shelf",
+      "emptyBody": "Books you buy show up here.",
+      "emptyLink": "Browse best sellers"
+    },
+    "rented": {
+      "title": "Rented books",
+      "subtitle": "{count} active rentals. The next one ends in {days} days.",
+      "tabs": ["Active", "Returned"],
+      "endsIn": "Expire in {days} days",
+      "paid": "Paid {price}",
+      "period": "Rental period",
+      "daysLeft": "{left} of {total} days left",
+      "extend": "Extend rental",
+      "buySave": "Buy, save {price}",
+      "keepTitle": "Keep a book you're renting",
+      "keepBody": "Buy any rented book and what you've already paid in rent comes off the price."
+    },
+    "logout": {
+      "title": "Logging out. Please wait…",
+      "body": "Your cart and rentals are saved to your account."
+    }
+  }
+}

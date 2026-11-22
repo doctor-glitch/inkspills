@@ -1,0 +1,116 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--button-height);
+  padding: 0 var(--space-6);
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+:host(:focus-visible) {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-color: var(--color-blue);
+}
+
+:host(:disabled),
+:host([aria-disabled='true']) {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+// ---- variants ----
+:host(.btn--buy) {
+  background: var(--color-blue);
+  color: var(--color-white);
+
+  &:hover:not(:disabled) {
+    background: var(--color-blue-text);
+  }
+}
+
+:host(.btn--rent) {
+  background: var(--color-white);
+  border-color: var(--color-red-border);
+  color: var(--color-red-text);
+
+  &:hover:not(:disabled) {
+    background: var(--color-red-tint);
+  }
+}
+
+:host(.btn--secondary) {
+  background: var(--color-white);
+  border-color: var(--color-line);
+  color: var(--color-ink);
+
+  &:hover:not(:disabled) {
+    background: var(--color-page);
+  }
+}
+
+:host(.btn--dark) {
+  background: var(--color-ink);
+  color: var(--color-white);
+
+  &:hover:not(:disabled) {
+    background: #1b2945;
+  }
+}
+
+:host(.btn--ghost-dark) {
+  background: transparent;
+  border-color: var(--color-on-dark-border);
+  color: var(--color-white);
+
+  &:hover:not(:disabled) {
+    background: rgb(255 255 255 / 0.06);
+  }
+}
+
+// ---- sizes (36 / 48 / 54 px in the XD) ----
+:host(.btn--sm) {
+  min-height: var(--button-height-sm);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-xs);
+}
+
+:host(.btn--lg) {
+  min-height: var(--button-height-lg);
+  padding: 0 var(--space-8);
+  font-size: var(--text-md);
+}
+
+:host(.btn--block) {
+  display: flex;
+  width: 100%;
+}
+
+.btn__spinner {
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: btn-spin 0.7s linear infinite;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

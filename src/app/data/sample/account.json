@@ -1,0 +1,158 @@
+{
+  "_meta": {
+    "source": "design/InkSpills_UI_Revamp_2026.xd account, cart, checkout and order artboards, extracted once in step 1a",
+    "designNow": "2026-11-21T12:00:00.000Z",
+    "notes": [
+      "Dates are absolute, relative to designNow. Sample services in later steps may shift them so countdowns stay current.",
+      "The order line for Sculpture is $11.99 as drawn in the Order completed artboard, which differs from the catalog price ($1.99).",
+      "Invented values are listed in placeholderFields."
+    ]
+  },
+  "profile": {
+    "id": "user-alex",
+    "fullName": "Alex Morgan",
+    "email": "alex.morgan@example.com",
+    "dateOfBirth": "1998-06-14",
+    "phone": "+1 (519) 555 0142",
+    "rentalReminders": true,
+    "createdAt": "2023-03-14T12:00:00.000Z",
+    "placeholder": true,
+    "placeholderFields": ["createdAt (design says only 'Member since 2023')"]
+  },
+  "billingAddress": {
+    "firstName": "Alex",
+    "lastName": "Morgan",
+    "phone": "+1 (519) 555 0142",
+    "country": "Canada",
+    "address": "220 King Street West, Unit 4",
+    "city": "Kitchener",
+    "province": "ON",
+    "postalCode": "N2G 1B4",
+    "placeholder": true,
+    "placeholderFields": ["province (inferred from Kitchener)"]
+  },
+  "cart": [
+    { "bookId": "book-the-black-arts", "mode": "buy", "weeks": 1, "savedForLater": false },
+    { "bookId": "book-endurance", "mode": "rent", "weeks": 1, "savedForLater": false },
+    { "bookId": "book-girl-in-the-woods", "mode": "buy", "weeks": 1, "savedForLater": false },
+    { "bookId": "book-sculpture", "mode": "buy", "weeks": 1, "savedForLater": false },
+    { "bookId": "book-the-two-towers", "mode": "buy", "weeks": 1, "savedForLater": true },
+    { "bookId": "book-happy", "mode": "buy", "weeks": 1, "savedForLater": true },
+    { "bookId": "book-the-monocle-book", "mode": "buy", "weeks": 1, "savedForLater": true },
+    { "bookId": "book-the-kinfolk-table", "mode": "buy", "weeks": 1, "savedForLater": true },
+    { "bookId": "book-faith-forward-future", "mode": "buy", "weeks": 1, "savedForLater": true }
+  ],
+  "wishlist": {
+    "bookIds": [
+      "book-the-kinfolk-table",
+      "book-the-psychology-of-money",
+      "book-harry-potter",
+      "book-milk-and-honey",
+      "book-endurance",
+      "book-your-heart-is-the-sea"
+    ],
+    "placeholder": true,
+    "placeholderFields": [
+      "The design shows 6 wishlist books but only marks Kinfolk Table and Psychology of Money; the other 4 are invented"
+    ]
+  },
+  "orders": [
+    {
+      "id": "5674543524",
+      "userId": "user-alex",
+      "status": "paid",
+      "subtotalCents": 4996,
+      "taxCents": 649,
+      "discountCents": 0,
+      "totalCents": 5645,
+      "cardLast4": "0187",
+      "items": [
+        {
+          "bookId": "book-the-black-arts",
+          "mode": "buy",
+          "weeks": null,
+          "unitCents": 2199,
+          "lineCents": 2199
+        },
+        {
+          "bookId": "book-endurance",
+          "mode": "rent",
+          "weeks": 1,
+          "unitCents": 599,
+          "lineCents": 599
+        },
+        {
+          "bookId": "book-girl-in-the-woods",
+          "mode": "buy",
+          "weeks": null,
+          "unitCents": 999,
+          "lineCents": 999
+        },
+        {
+          "bookId": "book-sculpture",
+          "mode": "buy",
+          "weeks": null,
+          "unitCents": 1199,
+          "lineCents": 1199
+        }
+      ],
+      "createdAt": "2026-11-21T12:00:00.000Z"
+    }
+  ],
+  "purchases": [
+    {
+      "userId": "user-alex",
+      "bookId": "book-zero-to-one",
+      "orderId": "order-2026-10-12",
+      "paidCents": 3199,
+      "purchasedAt": "2026-10-12T12:00:00.000Z"
+    },
+    {
+      "userId": "user-alex",
+      "bookId": "book-the-first-new-universe",
+      "orderId": "order-2026-09-03",
+      "paidCents": 799,
+      "purchasedAt": "2026-09-03T12:00:00.000Z"
+    },
+    {
+      "userId": "user-alex",
+      "bookId": "book-a-new-testament-biblical-theology",
+      "orderId": "order-2026-07-22",
+      "paidCents": 1199,
+      "purchasedAt": "2026-07-22T12:00:00.000Z"
+    }
+  ],
+  "rentals": [
+    {
+      "id": "rental-mere-christianity",
+      "userId": "user-alex",
+      "bookId": "book-mere-christianity",
+      "orderId": "order-2026-11-03",
+      "startsAt": "2026-11-03T12:00:00.000Z",
+      "endsAt": "2026-12-01T12:00:00.000Z",
+      "paidCents": 1299,
+      "status": "active"
+    },
+    {
+      "id": "rental-all-the-letters",
+      "userId": "user-alex",
+      "bookId": "book-all-the-letters-i-should-have-sent",
+      "orderId": "order-2026-11-08",
+      "startsAt": "2026-11-08T12:00:00.000Z",
+      "endsAt": "2026-12-06T12:00:00.000Z",
+      "paidCents": 699,
+      "status": "active"
+    },
+    {
+      "id": "rental-company-of-one",
+      "userId": "user-alex",
+      "bookId": "book-company-of-one",
+      "orderId": "order-2026-11-13",
+      "startsAt": "2026-11-13T12:00:00.000Z",
+      "endsAt": "2026-12-11T12:00:00.000Z",
+      "paidCents": 199,
+      "status": "active"
+    }
+  ],
+  "_placeholderOrderIds": "Order ids other than 5674543524 are invented (the design shows only that one)."
+}

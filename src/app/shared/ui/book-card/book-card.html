@@ -1,0 +1,48 @@
+@let b = book();
+<article class="card">
+  <div class="cover">
+    <img
+      [src]="b.coverPath"
+      alt=""
+      width="474"
+      height="632"
+      [attr.loading]="priority() ? 'eager' : 'lazy'"
+      [attr.fetchpriority]="priority() ? 'high' : null"
+      decoding="async"
+    />
+    @if (showStaffPick() && b.staffPick) {
+      <span class="flag">Staff pick</span>
+    }
+    <button
+      type="button"
+      class="fav"
+      [class.fav--on]="wishlisted()"
+      [attr.aria-pressed]="wishlisted()"
+      [attr.aria-label]="'Save ' + b.title + ' to wishlist'"
+      (click)="wishlistToggle.emit(b)"
+    >
+      <app-icon name="heart" [size]="16" [fill]="wishlisted()" />
+    </button>
+  </div>
+
+  <div class="meta">
+    <span class="author">{{ b.authorName }}</span>
+    <app-rating-stars [value]="b.ratingAvg" compact [size]="13" />
+  </div>
+
+  <h3 class="title">
+    <a class="link" [routerLink]="['/books', b.slug]" [title]="b.title">{{ b.title }}</a>
+  </h3>
+
+  <div class="actions">
+    <app-price-pill [buyCents]="b.buyPriceCents" [rentWeekCents]="b.rentWeekCents" />
+    <button
+      type="button"
+      class="add"
+      [attr.aria-label]="'Add ' + b.title + ' to cart'"
+      (click)="addToCart.emit(b)"
+    >
+      <app-icon name="plus" [size]="14" />
+    </button>
+  </div>
+</article>

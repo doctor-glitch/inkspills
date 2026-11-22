@@ -1,0 +1,31 @@
+<div class="region" role="status" aria-live="polite" aria-atomic="false">
+  @for (toast of service.toasts(); track toast.id) {
+    <div class="toast">
+      @if (toast.imageSrc) {
+        <img class="thumb" [src]="toast.imageSrc" alt="" width="44" height="58" />
+      }
+      <div class="body">
+        <p class="title">
+          <app-icon class="tick" name="check" [size]="12" />
+          {{ toast.title }}
+        </p>
+        @if (toast.message) {
+          <p class="message">{{ toast.message }}</p>
+        }
+      </div>
+      @if (toast.action; as action) {
+        <a class="action" [routerLink]="action.link" (click)="service.dismiss(toast.id)">
+          {{ action.label }}
+        </a>
+      }
+      <button
+        type="button"
+        class="close"
+        aria-label="Dismiss notification"
+        (click)="service.dismiss(toast.id)"
+      >
+        <app-icon name="plus" [size]="12" />
+      </button>
+    </div>
+  }
+</div>
