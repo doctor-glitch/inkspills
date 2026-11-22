@@ -13,7 +13,8 @@ The full plan is in `docs/PLAN.md`. Read the relevant sections before starting e
 - Phase 1, Pages and UI: steps 1a, 1b, 1c, 1d. Pages read from sample-data services in `src/app/data/sample/`.
 - Phase 2, Functionality: steps 2a, 2b, 2c. Swap in `src/app/data/supabase/` services with the SAME interfaces; pages should barely change.
 - Phase 3, Testing: end-to-end, responsive, accessibility, the PLAN.md section 11 checklist.
-- Do one step per session. Show a plan before writing code. Each step ships its own unit tests, ends with tests passing, a short summary and a commit.
+- Do one step per session. Show a plan before writing code. Each step ships its own unit tests and ends with tests passing and a short summary.
+- Never run git commit or git push. Leave all changes uncommitted; I review and commit them myself.
 
 ## Stack (decided)
 - Angular 22: standalone components, signals, zoneless, SSR with hydration, per-route render modes, Signal Forms, Angular Aria
@@ -53,6 +54,7 @@ The full plan is in `docs/PLAN.md`. Read the relevant sections before starting e
 - Ask at most one round of questions per step, and keep the final summary short: what changed, what's left, decisions needed.
 
 ## Skills
-- Use a skill only when I name it in the prompt, or when it clearly fits the current step and you tell me which one you are using.
-- Do not run process-heavy skills (brainstorming, multi-agent planning, subagent-driven development) for this project; docs/PLAN.md and the step prompts are already the plan.
-- Apply the karpathy-guidelines skill on every coding step.
+- Apply the andrej-karpathy-skills:karpathy-guidelines skill on every coding step.
+- Use any other skill only when I name it in the prompt, or when it clearly fits the current step and you tell me which one you are using.
+- Do not run process-heavy skills (brainstorming, multi-agent planning, subagent-driven development, superpowers) for this project; docs/PLAN.md and the step prompts are already the plan.
+- Do not use the frontend-design skill; match the XD design exactly instead of inventing new styles.
