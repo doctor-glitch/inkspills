@@ -133,3 +133,32 @@ export interface Rental {
   paidCents: Cents;
   status: RentalStatus;
 }
+
+/** Percentages per star, e.g. { "5": 68, "4": 21, ... }. Phase 2 computes this from reviews. */
+export type RatingBreakdown = Record<'1' | '2' | '3' | '4' | '5', number>;
+
+/** Everything the book details page shows about one book. */
+export interface BookDetail {
+  book: Book;
+  author: Author;
+  genre: Genre;
+  ratingBreakdown: RatingBreakdown | null;
+}
+
+/** Catalog filters from the /books query string. Empty or missing means no filter. */
+export interface CatalogQuery {
+  /** Genre slug */
+  genre?: string;
+  /** Free-text search over title, author and genre */
+  q?: string;
+}
+
+/** The curated rows on Home. */
+export type RailName = 'newArrivals' | 'recommended' | 'bestSellers';
+
+/** A signed-in user as the app sees it. */
+export interface Session {
+  userId: string;
+  email: string;
+  fullName: string;
+}

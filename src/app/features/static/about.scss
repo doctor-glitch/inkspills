@@ -1,0 +1,236 @@
+@use 'breakpoints' as bp;
+
+:host {
+  display: block;
+}
+
+.container {
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 0 var(--gutter) var(--space-16);
+
+  @include bp.up(desktop) {
+    padding-bottom: 5.5rem;
+  }
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+// ---- Intro ----
+.intro {
+  display: grid;
+  gap: var(--space-10);
+  padding-top: var(--space-10);
+
+  @include bp.up(desktop) {
+    grid-template-columns: 1fr 37.5rem; // text | 600 px photos
+    align-items: center;
+    gap: var(--space-10);
+    padding-top: 4.5rem;
+  }
+}
+
+.title {
+  margin: 0 0 var(--space-5);
+  font-size: clamp(2.5rem, 3vw + 1.5rem, var(--text-display-2));
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-tight);
+}
+
+.lead {
+  max-width: 38rem;
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.125rem, 0.5vw + 1rem, 1.3125rem); // 21
+  line-height: 1.7;
+  color: var(--color-serif-body);
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: var(--space-4);
+  aspect-ratio: 600 / 416;
+}
+
+.photo--tall {
+  grid-row: span 2;
+}
+
+// ---- Prices ----
+.prices {
+  display: grid;
+  margin-top: var(--space-12);
+
+  @include bp.up(tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include bp.up(desktop) {
+    margin-top: 4rem;
+  }
+}
+
+.price {
+  display: flex;
+  gap: var(--space-6);
+  padding: var(--space-8) var(--space-6);
+
+  @include bp.up(desktop) {
+    gap: var(--space-8);
+    padding: 2.8rem var(--space-12);
+  }
+
+  h2 {
+    margin: 0 0 var(--space-2);
+  }
+  p {
+    max-width: 24rem;
+    margin: 0;
+    color: var(--color-slate);
+  }
+}
+
+.price--buy {
+  background: var(--color-blue-tint);
+  .price-icon {
+    color: var(--color-blue);
+  }
+}
+
+.price--rent {
+  background: var(--color-red-tint);
+  .price-icon {
+    color: var(--color-red);
+  }
+}
+
+// ---- Vision ----
+.vision {
+  display: grid;
+  gap: var(--space-10);
+  margin-top: var(--space-16);
+
+  @include bp.up(desktop) {
+    grid-template-columns: 32.5rem 1fr; // photos 520 | text from x=672
+    align-items: start;
+    gap: 4.5rem;
+    margin-top: 4.5rem;
+  }
+}
+
+.vision-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  max-width: 32.5rem;
+  padding-bottom: var(--space-12);
+
+  img {
+    aspect-ratio: 252 / 300;
+  }
+}
+
+.photo--low {
+  transform: translateY(var(--space-12));
+}
+
+.vision-title {
+  margin: 0 0 var(--space-4);
+  font-size: clamp(2rem, 1.5vw + 1.5rem, 2.75rem); // 44
+  letter-spacing: var(--tracking-h1);
+}
+
+.vision-body {
+  max-width: 38rem;
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: var(--text-serif-lg);
+  line-height: 1.7;
+  color: var(--color-serif-body);
+}
+
+.next-title {
+  margin: var(--space-10) 0 var(--space-3);
+  font-family: var(--font-sans);
+  font-size: var(--text-serif-md);
+  font-weight: var(--weight-semibold);
+}
+
+.next {
+  max-width: 38.75rem; // 620
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-line);
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+  strong {
+    display: block;
+    font-weight: var(--weight-semibold);
+  }
+}
+
+.next-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-control);
+  background: var(--color-page);
+}
+
+.next-body {
+  font-size: var(--text-xs);
+  color: var(--color-slate);
+}
+
+// ---- CTA band ----
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-top: var(--space-16);
+  padding: var(--space-8) var(--space-6);
+  border-radius: var(--radius-xl);
+  background: var(--color-ink);
+  color: var(--color-on-dark-muted);
+
+  @include bp.up(desktop) {
+    margin-top: 5rem;
+    padding: 3.1rem 3.5rem;
+  }
+
+  p {
+    margin: var(--space-2) 0 0;
+  }
+}
+
+.cta-title {
+  margin: 0;
+  font-size: clamp(1.625rem, 1.5vw + 1rem, var(--text-h2));
+  letter-spacing: var(--tracking-h2);
+  color: var(--color-white);
+}
+
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}

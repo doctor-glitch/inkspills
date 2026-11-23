@@ -1,0 +1,255 @@
+@use 'breakpoints' as bp;
+
+:host {
+  display: block;
+}
+
+.header {
+  position: relative;
+  z-index: 10;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  height: 3.75rem;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+
+  @include bp.up(tablet) {
+    gap: var(--space-6);
+    height: var(--header-height);
+  }
+}
+
+.logo {
+  display: inline-flex;
+  flex: none;
+  img {
+    width: 7.5rem;
+    height: auto;
+    @include bp.up(tablet) {
+      width: 8.5625rem; // 137
+    }
+  }
+}
+
+// ---- Nav ----
+.nav ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--color-slate);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-ink);
+  }
+}
+
+.nav-link--active {
+  color: var(--color-ink);
+}
+
+@include bp.down(tablet) {
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: var(--space-2) var(--gutter) var(--space-4);
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-line);
+  }
+  .nav--open {
+    display: block;
+  }
+  .nav ul {
+    flex-direction: column;
+  }
+  .nav-link {
+    display: block;
+    padding: var(--space-3) 0;
+  }
+  .nav-link--active {
+    color: var(--color-blue-text);
+  }
+}
+
+@include bp.up(tablet) {
+  .nav {
+    margin-left: var(--space-2);
+  }
+  .nav ul {
+    gap: var(--space-8);
+  }
+  .nav-link--active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.375rem;
+    height: 2px;
+    background: var(--color-blue);
+  }
+}
+
+// ---- Search ----
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--color-muted);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  height: 2.75rem; // 44
+  padding: 0 var(--space-4) 0 2.75rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  background: var(--color-page);
+  font: inherit;
+  font-size: var(--text-sm);
+  color: var(--color-ink);
+
+  &::placeholder {
+    color: var(--color-muted);
+  }
+  &:focus-visible {
+    outline: none;
+    border-color: var(--color-blue);
+    box-shadow: var(--focus-ring);
+  }
+}
+
+@include bp.down(tablet) {
+  .search {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: var(--space-3) var(--gutter);
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-line);
+  }
+  .search--open {
+    display: flex;
+  }
+  .search-icon {
+    left: calc(var(--gutter) + 1rem);
+  }
+}
+
+@include bp.up(tablet) {
+  .search {
+    flex: 1 1 auto;
+    max-width: 28.75rem; // 460
+    margin-left: auto;
+  }
+}
+
+// ---- Actions ----
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-left: auto;
+
+  @include bp.up(desktop) {
+    gap: var(--space-6);
+  }
+}
+
+.icon-btn,
+.action {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--color-ink);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-blue-text);
+  }
+}
+
+.menu-btn {
+  margin-left: calc(-1 * var(--space-2));
+}
+
+.menu-btn,
+.search-btn {
+  @include bp.up(tablet) {
+    display: none;
+  }
+}
+
+.help {
+  @include bp.down(tablet) {
+    display: none;
+  }
+}
+
+.action-label {
+  @include bp.down(desktop) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.3125rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-blue);
+  color: var(--color-white);
+  font-size: var(--text-3xs);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+
+  @include bp.down(desktop) {
+    position: absolute;
+    top: 0;
+    right: -0.125rem;
+  }
+}

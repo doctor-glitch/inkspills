@@ -1,0 +1,64 @@
+<div class="container">
+  <section class="intro" aria-labelledby="about-title">
+    <div>
+      <h1 class="title" id="about-title">{{ text.title }}</h1>
+      <p class="lead">{{ text.intro }}</p>
+    </div>
+    <div class="photos">
+      <img class="photo photo--tall" src="/assets/images/books/the-kinfolk-table.jpg" alt="" width="584" height="832" />
+      <img class="photo" src="/assets/images/about/isaiah.jpg" alt="" width="584" height="400" />
+      <img class="photo" src="/assets/images/books/the-psychology-of-money.jpg" alt="" width="584" height="400" />
+    </div>
+  </section>
+
+  <section class="prices" aria-label="Prices">
+    <div class="price price--buy">
+      <app-icon class="price-icon" name="book" [size]="24" />
+      <div>
+        <h2 class="h3">{{ text.buy.title }}</h2>
+        <p>{{ text.buy.body }}</p>
+      </div>
+    </div>
+    <div class="price price--rent">
+      <app-icon class="price-icon" name="clock" [size]="24" />
+      <div>
+        <h2 class="h3">{{ text.rent.title }}</h2>
+        <p>{{ text.rent.body }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vision" aria-labelledby="vision-title">
+    <div class="vision-photos">
+      <img class="photo" src="/assets/images/about/lords-book.jpg" alt="" width="504" height="600" loading="lazy" />
+      <img class="photo photo--low" src="/assets/images/about/sun-flowers.jpg" alt="" width="504" height="600" loading="lazy" />
+    </div>
+    <div>
+      <h2 class="vision-title" id="vision-title">{{ text.vision.title }}</h2>
+      <p class="vision-body">{{ text.vision.body }}</p>
+      <h3 class="next-title">{{ text.vision.comingNext }}</h3>
+      <ul class="next" role="list">
+        @for (item of text.vision.items; track item.title; let i = $index) {
+          <li>
+            <span class="next-icon"><app-icon [name]="visionIcons[i]" [size]="18" /></span>
+            <span>
+              <strong>{{ item.title }}</strong>
+              <span class="next-body">{{ item.body }}</span>
+            </span>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta" aria-labelledby="cta-title">
+    <div>
+      <h2 class="cta-title" id="cta-title">{{ text.cta.title }}</h2>
+      <p>{{ text.cta.body }}</p>
+    </div>
+    <div class="cta-actions">
+      <a appButton="buy" size="lg" routerLink="/books">{{ text.cta.primary }}</a>
+      <a appButton="ghost-dark" size="lg" routerLink="/help">{{ text.cta.secondary }}</a>
+    </div>
+  </section>
+</div>

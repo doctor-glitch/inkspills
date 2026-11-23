@@ -7,6 +7,7 @@ import type {
   Order,
   Profile,
   Purchase,
+  RatingBreakdown,
   Rental,
   Review,
 } from '../models';
@@ -16,9 +17,6 @@ export interface Placeholder {
   placeholder?: boolean;
   placeholderFields?: string[];
 }
-
-/** Percentages per star, e.g. { "5": 68, "4": 21, ... }. Phase 2 computes this from reviews. */
-export type RatingBreakdown = Record<'1' | '2' | '3' | '4' | '5', number>;
 
 export type SampleBook = Book & Placeholder & { ratingBreakdown?: RatingBreakdown };
 

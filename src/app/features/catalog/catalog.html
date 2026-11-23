@@ -1,0 +1,40 @@
+<div class="container page">
+  <header class="head">
+    <h1 class="h1">{{ heading() }}</h1>
+    <p class="subtitle">{{ text.subtitle }}</p>
+  </header>
+
+  <!-- Render once genres load: the listbox drops a value whose option does not exist yet. -->
+  @if (genres.value().length) {
+    <app-genre-chips
+      class="chips"
+      [genres]="genres.value()"
+      [selected]="query().genre"
+      (selectedChange)="selectGenre($event)"
+    />
+  }
+
+  @if (books.value(); as list) {
+    <p class="count" role="status">{{ countText() }}</p>
+    @if (list.length) {
+      <ul class="grid" role="list">
+        @for (book of list; track book.id; let i = $index) {
+          <li>
+            <app-book-card
+              [book]="book"
+              [wishlisted]="wishSet().has(book.id)"
+              [priority]="i < 2"
+              (addToCart)="add($event)"
+            />
+          </li>
+        }
+      </ul>
+    } @else {
+      <div class="empty">
+        <h2 class="h3">{{ text.emptyTitle }}</h2>
+        <p>{{ text.emptyBody }}</p>
+        <a appButton="secondary" routerLink="/books">{{ text.clear }}</a>
+      </div>
+    }
+  }
+</div>

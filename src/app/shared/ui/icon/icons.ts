@@ -197,6 +197,19 @@ export const ICONS = {
       },
     ],
   },
+  // Not in the XD (step 1b): mobile header menu and close buttons.
+  menu: {
+    w: 18,
+    h: 14,
+    stroke: 1.5,
+    paths: [{ d: 'M 0,0 l 16,0 M 0,6 l 16,0 M 0,12 l 16,0', x: 1, y: 1 }],
+  },
+  close: {
+    w: 14,
+    h: 14,
+    stroke: 1.5,
+    paths: [{ d: 'M 0,0 l 12,12 M 12,0 l -12,12', x: 1, y: 1 }],
+  },
 } as const satisfies Record<string, IconDef>;
 
 export type IconName = keyof typeof ICONS;

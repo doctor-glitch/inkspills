@@ -35,7 +35,10 @@
       "placeholder": "E-mail",
       "button": "Subscribe",
       "promos": "Include promotional offers",
-      "priceDrops": "Include price drops"
+      "priceDrops": "Include price drops",
+      "emailRequired": "Enter your email.",
+      "emailInvalid": "Enter a full email address, like name@example.com.",
+      "success": "Thanks for subscribing. Look out for our first email this week."
     },
     "copyright": "Copyright © 2026 InkSpills. All rights reserved.",
     "legal": ["Privacy", "Terms", "Cookies"]
@@ -333,6 +336,55 @@
     "logout": {
       "title": "Logging out. Please wait…",
       "body": "Your cart and rentals are saved to your account."
+    }
+  },
+  "catalog": {
+    "title": "Books",
+    "subtitle": "Buy to keep or rent by the week.",
+    "resultsFor": "Results for “{q}”",
+    "count": "{count} books",
+    "countOne": "1 book",
+    "emptyTitle": "No books match",
+    "emptyBody": "Try another search or pick a different genre.",
+    "clear": "Show all books"
+  },
+  "placeholderPage": {
+    "body": "This page is coming soon.",
+    "home": "Back to Home"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "bookTitle": "Book not found",
+    "body": "We couldn't find that page. It may have moved, or the link may be wrong.",
+    "browse": "Browse books"
+  },
+  "seo": {
+    "home": {
+      "title": "InkSpills",
+      "description": "Buy ebooks to keep or rent them by the week. Read instantly in your browser, with a clear countdown for every rental."
+    },
+    "catalog": {
+      "title": "Books",
+      "description": "Browse poetry, fiction, fantasy, self-help and more. Buy to keep or rent from one to four weeks."
+    },
+    "search": {
+      "title": "Search: {q}",
+      "description": "Books matching “{q}” at InkSpills. Buy to keep or rent by the week."
+    },
+    "book": {
+      "title": "{title} by {author}",
+      "description": "{tagline}"
+    },
+    "about": {
+      "title": "About us",
+      "description": "InkSpills is a bookstore where you choose: buy the ebooks you want to keep, or rent the ones you only need for a while."
+    },
+    "placeholder": {
+      "description": "This InkSpills page is coming soon."
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "We couldn't find that page at InkSpills."
     }
   }
 }

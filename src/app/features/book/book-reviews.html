@@ -1,0 +1,45 @@
+<section class="reviews" aria-labelledby="reviews-title">
+  <div class="summary">
+    <h2 class="h3" id="reviews-title">{{ text.readerReviews }}</h2>
+    <p class="average">
+      <span class="score">{{ ratingAvg() }}</span>
+      <span class="of">{{ summary() }}</span>
+    </p>
+    @if (bars().length) {
+      <ul class="bars" role="list" aria-label="Rating breakdown">
+        @for (bar of bars(); track bar.star) {
+          <li class="bar">
+            <span class="star" aria-hidden="true">{{ bar.star }}</span>
+            <span class="track" aria-hidden="true">
+              <span class="fill" [style.width.%]="bar.pct"></span>
+            </span>
+            <span class="pct">
+              <span class="visually-hidden">{{ bar.star }} {{ bar.star === '1' ? 'star' : 'stars' }}: </span>{{ bar.pct }}%
+            </span>
+          </li>
+        }
+      </ul>
+    }
+    <button appButton="secondary" type="button" block>{{ text.writeReview }}</button>
+  </div>
+
+  <div class="list">
+    <ul role="list">
+      @for (r of items(); track r.id) {
+        <li class="review">
+          <div class="who">
+            <span class="avatar" aria-hidden="true">{{ r.initial }}</span>
+            <span class="name-line">
+              <span class="name">{{ r.reviewerName }}</span>
+              <span class="when">{{ r.when }}</span>
+            </span>
+            <app-tag [tone]="r.acquired === 'rented' ? 'rent' : 'buy'">{{ r.acquiredLabel }}</app-tag>
+            <app-rating-stars [value]="r.rating" [size]="15" />
+          </div>
+          <p class="body">{{ r.body }}</p>
+        </li>
+      }
+    </ul>
+    <button type="button" class="read-all">{{ readAll() }}</button>
+  </div>
+</section>

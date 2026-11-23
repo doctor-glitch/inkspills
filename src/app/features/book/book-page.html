@@ -1,0 +1,158 @@
+@if (view(); as v) {
+  <div class="container page">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol role="list">
+        <li><a routerLink="/">Home</a></li>
+        <li>
+          <app-icon name="chevron-right" [size]="8" />
+          <a routerLink="/books" [queryParams]="{ genre: v.genre.slug }">{{ v.genre.name }}</a>
+        </li>
+        <li>
+          <app-icon name="chevron-right" [size]="8" />
+          <span aria-current="page">{{ v.book.title }}</span>
+        </li>
+      </ol>
+    </nav>
+
+    <section class="top">
+      <img
+        class="cover"
+        [src]="v.book.coverPath"
+        [alt]="'Cover of ' + v.book.title"
+        width="470"
+        height="620"
+        fetchpriority="high"
+      />
+
+      <div class="info">
+        <app-tag tone="neutral">{{ v.genre.name }}</app-tag>
+        <h1 class="title">{{ v.book.title }}</h1>
+        <p class="byline">
+          {{ text.by }}
+          <a class="author" routerLink="/books" [queryParams]="{ q: v.author.name }">{{
+            v.author.name
+          }}</a>
+          <app-rating-stars [value]="v.book.ratingAvg" compact [size]="15" />
+          <span class="count">{{ v.reviewsCount }}</span>
+        </p>
+        <p class="tagline">{{ v.book.tagline }}</p>
+
+        <fieldset class="options">
+          <legend class="visually-hidden">Buy or rent</legend>
+          <label class="option option--buy" [class.option--on]="mode() === 'buy'">
+            <input
+              class="visually-hidden"
+              type="radio"
+              name="mode"
+              value="buy"
+              [checked]="mode() === 'buy'"
+              (change)="mode.set('buy')"
+            />
+            <span class="option-head">{{ text.buy.label }}<span class="radio"></span></span>
+            <span class="option-price">{{ v.buyPrice }}</span>
+            <span class="option-note">{{ text.buy.note }}</span>
+          </label>
+          <label class="option option--rent" [class.option--on]="mode() === 'rent'">
+            <input
+              class="visually-hidden"
+              type="radio"
+              name="mode"
+              value="rent"
+              [checked]="mode() === 'rent'"
+              (change)="mode.set('rent')"
+            />
+            <span class="option-head">{{ text.rent.label }}<span class="radio"></span></span>
+            <span class="option-price"
+              >{{ v.rentPrice }}<small>{{ text.rent.unit }}</small></span
+            >
+            <span class="option-note">{{ text.rent.note }}</span>
+          </label>
+        </fieldset>
+
+        <div class="ctas">
+          <button appButton="buy" size="lg" type="button" (click)="acquire('buy')">
+            {{ text.buy.cta }}
+          </button>
+          <button appButton="rent" size="lg" type="button" (click)="acquire('rent')">
+            {{ text.rent.cta }}
+          </button>
+          <button
+            type="button"
+            class="fav"
+            [attr.aria-pressed]="v.wishlisted"
+            [attr.aria-label]="'Save ' + v.book.title + ' to wishlist'"
+          >
+            <app-icon name="heart" [size]="18" [fill]="v.wishlisted" />
+          </button>
+        </div>
+
+        <ul class="perks" role="list">
+          @for (perk of text.perks; track perk; let i = $index) {
+            <li><app-icon [name]="perkIcons[i]" [size]="14" />{{ perk }}</li>
+          }
+        </ul>
+      </div>
+    </section>
+
+    <div class="details">
+      <section>
+        <h2 class="h3">{{ text.aboutBook }}</h2>
+        <p class="prose">{{ v.book.about }}</p>
+      </section>
+
+      <section>
+        <h2 class="h3">{{ text.aboutAuthor }}</h2>
+        <div class="author-card">
+          <span class="initials" aria-hidden="true">{{ v.author.initials }}</span>
+          <span class="author-line">
+            <span class="author-name">{{ v.author.name }}</span>
+            @if (v.author.roleLine) {
+              <span class="author-role">{{ v.author.roleLine }}</span>
+            }
+          </span>
+        </div>
+        @if (v.author.bio) {
+          <p class="prose">{{ v.author.bio }}</p>
+        }
+      </section>
+
+      <section class="more">
+        <h2 class="h3">{{ text.moreInformation }}</h2>
+        <dl>
+          @for (row of v.info; track row.label) {
+            <div class="row">
+              <dt>{{ row.label }}</dt>
+              <dd>{{ row.value }}</dd>
+            </div>
+          }
+        </dl>
+      </section>
+    </div>
+
+    <app-book-reviews
+      class="reviews"
+      [ratingAvg]="v.book.ratingAvg"
+      [ratingCount]="v.book.ratingCount"
+      [breakdown]="v.ratingBreakdown"
+      [reviews]="reviews.value()"
+    />
+
+    @if (alsoLiked.value().length) {
+      <app-book-rail
+        class="also"
+        [heading]="text.readersAlsoLiked"
+        seeAllLink="/books"
+        [seeAllQuery]="{ genre: v.genre.slug }"
+        [books]="alsoLiked.value()"
+        [wishlistIds]="wishlist.value()"
+        (addToCart)="addSummary($event)"
+      />
+    }
+  </div>
+} @else if (!detail.isLoading()) {
+  <section class="container missing">
+    <h1 class="h1">{{ notFound.bookTitle }}</h1>
+    <p>{{ notFound.body }}</p>
+    <a appButton="buy" routerLink="/books">{{ notFound.browse }}</a>
+  </section>
+}

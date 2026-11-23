@@ -1,0 +1,221 @@
+@use 'breakpoints' as bp;
+
+:host {
+  display: block;
+}
+
+.container {
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+// ---- Hero ----
+.hero {
+  display: grid;
+  gap: var(--space-12);
+  padding-top: var(--space-10);
+
+  @include bp.up(desktop) {
+    grid-template-columns: 1fr 37.5rem; // text | 600 px art
+    align-items: start;
+    gap: var(--space-10);
+    padding-top: 6.25rem; // title box ~100 px below the header
+  }
+}
+
+.display-1 {
+  max-width: 10ch;
+  margin: 0;
+}
+
+.hero-body {
+  max-width: 36rem;
+  margin: var(--space-5) 0 var(--space-8);
+  font-size: var(--text-lg);
+  line-height: 1.65;
+  color: var(--color-slate);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.from {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-8);
+  margin: var(--space-10) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-xs);
+  color: var(--color-slate);
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  .buy {
+    color: var(--color-blue);
+  }
+  .rent {
+    color: var(--color-red);
+  }
+}
+
+// Cover stack, positioned as on the 600 x 480 XD art area (760..1360, 148..628).
+.hero-art {
+  position: relative;
+  width: 100%;
+  max-width: 37.5rem;
+  aspect-ratio: 600 / 480;
+  margin: 0 auto;
+
+  @include bp.up(desktop) {
+    margin-top: -1.75rem; // art starts 72 px below the header in the XD
+  }
+}
+
+.cover {
+  position: absolute;
+  height: auto;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.cover--0 {
+  left: 0;
+  top: 12.5%;
+  width: 41.67%;
+  aspect-ratio: 250 / 340;
+}
+
+.cover--1 {
+  left: 29.33%;
+  top: 0;
+  width: 43.33%;
+  aspect-ratio: 260 / 380;
+}
+
+.cover--2 {
+  left: 63.33%;
+  top: 22.92%;
+  width: 36.67%;
+  aspect-ratio: 220 / 300;
+}
+
+.pick {
+  position: absolute;
+  left: 16%;
+  top: 84.9%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 58%;
+  min-width: 18rem;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-xl);
+  background: var(--color-white);
+  color: inherit;
+  text-decoration: none;
+
+  &:hover .pick-title {
+    color: var(--color-blue-text);
+  }
+
+  @include bp.down(tablet) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.pick-text {
+  display: grid;
+  min-width: 0;
+}
+
+.pick-label {
+  font-size: var(--text-2xs);
+  color: var(--color-muted);
+}
+
+.pick-title {
+  overflow: hidden;
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// ---- Sections ----
+.chips {
+  margin-top: var(--space-20);
+
+  @include bp.up(desktop) {
+    margin-top: 3.5rem;
+  }
+}
+
+.section {
+  margin-top: var(--space-12);
+
+  @include bp.up(tablet) {
+    margin-top: var(--space-16);
+  }
+  @include bp.up(desktop) {
+    margin-top: 4.5rem;
+  }
+}
+
+.section--last {
+  margin-bottom: var(--space-16);
+
+  @include bp.up(desktop) {
+    margin-bottom: 5.5rem;
+  }
+}
+
+// ---- Buy / Rent explainer ----
+.explainer {
+  display: grid;
+
+  @include bp.up(tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.explain {
+  padding: var(--space-8) var(--space-6);
+
+  @include bp.up(desktop) {
+    min-height: 15.5rem; // 248
+    padding: 2.8rem var(--space-12);
+  }
+
+  // White tag on the tinted panel, as drawn.
+  app-tag.tag {
+    background: var(--color-white);
+  }
+  h2 {
+    margin: var(--space-6) 0 var(--space-3);
+  }
+  p {
+    max-width: 26rem;
+    margin: 0;
+    color: var(--color-slate);
+  }
+}
+
+.explain--buy {
+  background: var(--color-blue-tint);
+}
+
+.explain--rent {
+  background: var(--color-red-tint);
+}

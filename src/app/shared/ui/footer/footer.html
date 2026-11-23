@@ -1,0 +1,71 @@
+<footer class="footer">
+  <div class="inner">
+    <div class="brand">
+      <a routerLink="/" aria-label="InkSpills home">
+        <img src="/assets/logo-on-dark.svg" alt="" width="137" height="32" />
+      </a>
+      <p class="tagline">{{ text.tagline }}</p>
+    </div>
+
+    @for (col of columns; track col.title) {
+      <nav class="col" [attr.aria-label]="col.title">
+        <h2 class="col-title">{{ col.title }}</h2>
+        <ul role="list">
+          @for (link of col.links; track link.label) {
+            <li>
+              <a [routerLink]="link.path" [fragment]="link.fragment">{{ link.label }}</a>
+            </li>
+          }
+        </ul>
+      </nav>
+    }
+
+    <section class="newsletter" aria-labelledby="newsletter-title">
+      <h2 class="col-title" id="newsletter-title">{{ text.newsletter.title }}</h2>
+      <p class="body">{{ text.newsletter.body }}</p>
+
+      @if (subscribed()) {
+        <p class="success" role="status">{{ text.newsletter.success }}</p>
+      } @else {
+        <form novalidate (submit)="subscribe($event)">
+          <div class="row">
+            <label class="visually-hidden" for="newsletter-email">Email</label>
+            <input
+              id="newsletter-email"
+              class="email"
+              type="email"
+              autocomplete="email"
+              [placeholder]="text.newsletter.placeholder"
+              [formField]="newsletter.email"
+              [attr.aria-invalid]="emailError() ? 'true' : null"
+              [attr.aria-describedby]="emailError() ? 'newsletter-error' : null"
+            />
+            <button type="submit" class="subscribe">{{ text.newsletter.button }}</button>
+          </div>
+          @if (emailError()) {
+            <p class="error" id="newsletter-error" role="alert">{{ emailError() }}</p>
+          }
+          <div class="options">
+            <app-checkbox tone="dark" [formField]="newsletter.promos">{{
+              text.newsletter.promos
+            }}</app-checkbox>
+            <app-checkbox tone="dark" [formField]="newsletter.priceDrops">{{
+              text.newsletter.priceDrops
+            }}</app-checkbox>
+          </div>
+        </form>
+      }
+    </section>
+  </div>
+
+  <div class="legal">
+    <p>{{ text.copyright }}</p>
+    <ul role="list">
+      @for (link of legal; track link.label) {
+        <li>
+          <a [routerLink]="link.path" [fragment]="link.fragment">{{ link.label }}</a>
+        </li>
+      }
+    </ul>
+  </div>
+</footer>

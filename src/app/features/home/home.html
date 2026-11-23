@@ -1,0 +1,96 @@
+@if (data.value(); as d) {
+  <section class="hero container" aria-labelledby="hero-title">
+    <div class="hero-text">
+      <h1 class="display-1" id="hero-title">{{ text.hero.title }}</h1>
+      <p class="hero-body">{{ text.hero.body }}</p>
+      <div class="hero-actions">
+        <a appButton="buy" size="lg" routerLink="/books">{{ text.hero.primary }}</a>
+        <a appButton="secondary" size="lg" routerLink="/help" fragment="renting">{{
+          text.hero.secondary
+        }}</a>
+      </div>
+      @if (fromPrices(); as p) {
+        <ul class="from" role="list">
+          <li><app-icon class="buy" name="book" [size]="16" />{{ p.own }}</li>
+          <li><app-icon class="rent" name="clock" [size]="16" />{{ p.rent }}</li>
+        </ul>
+      }
+    </div>
+
+    <div class="hero-art">
+      @for (cover of d.heroCovers; track cover.id; let i = $index) {
+        <img
+          class="cover cover--{{ i }}"
+          [src]="cover.coverPath"
+          [alt]="cover.title"
+          width="520"
+          height="760"
+          loading="eager"
+          [attr.fetchpriority]="i === 1 ? 'high' : null"
+        />
+      }
+      <a class="pick" [routerLink]="['/books', d.staffPick.slug]">
+        <span class="pick-text">
+          <span class="pick-label">{{ text.hero.staffPickLabel }}</span>
+          <span class="pick-title">{{ d.staffPick.title }}</span>
+        </span>
+        <app-price-pill
+          [buyCents]="d.staffPick.buyPriceCents"
+          [rentWeekCents]="d.staffPick.rentWeekCents"
+        />
+      </a>
+    </div>
+  </section>
+
+  <div class="container chips">
+    <app-genre-chips [genres]="d.genres" (selectedChange)="openGenre($event)" />
+  </div>
+
+  <div class="container section">
+    <app-book-rail
+      [heading]="text.rails.newArrivals.title"
+      [subtitle]="text.rails.newArrivals.subtitle"
+      seeAllLink="/books"
+      [books]="d.newArrivals"
+      [wishlistIds]="wishlist.value()"
+      priority
+      (addToCart)="add($event)"
+    />
+  </div>
+
+  <section class="container section explainer" aria-label="Buy or rent">
+    <div class="explain explain--buy">
+      <app-tag tone="buy">{{ text.buyRent.buy.tag }}</app-tag>
+      <h2 class="h2">{{ text.buyRent.buy.title }}</h2>
+      <p>{{ text.buyRent.buy.body }}</p>
+    </div>
+    <div class="explain explain--rent">
+      <app-tag tone="rent">{{ text.buyRent.rent.tag }}</app-tag>
+      <h2 class="h2">{{ text.buyRent.rent.title }}</h2>
+      <p>{{ text.buyRent.rent.body }}</p>
+    </div>
+  </section>
+
+  <div class="container section">
+    <app-book-rail
+      [heading]="text.rails.recommended.title"
+      [subtitle]="text.rails.recommended.subtitle"
+      seeAllLink="/books"
+      [books]="d.recommended"
+      [wishlistIds]="wishlist.value()"
+      showStaffPick
+      (addToCart)="add($event)"
+    />
+  </div>
+
+  <div class="container section section--last">
+    <app-book-rail
+      [heading]="text.rails.bestSellers.title"
+      [subtitle]="text.rails.bestSellers.subtitle"
+      seeAllLink="/books"
+      [books]="d.bestSellers"
+      [wishlistIds]="wishlist.value()"
+      (addToCart)="add($event)"
+    />
+  </div>
+}

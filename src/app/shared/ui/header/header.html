@@ -1,0 +1,82 @@
+<header class="header">
+  <div class="bar">
+    <button
+      type="button"
+      class="icon-btn menu-btn"
+      aria-controls="site-nav"
+      [attr.aria-expanded]="menuOpen()"
+      [attr.aria-label]="menuOpen() ? 'Close menu' : 'Open menu'"
+      (click)="toggleMenu()"
+    >
+      <app-icon [name]="menuOpen() ? 'close' : 'menu'" [size]="18" />
+    </button>
+
+    <a class="logo" routerLink="/" aria-label="InkSpills home">
+      <img src="/assets/logo.svg" alt="" width="137" height="32" />
+    </a>
+
+    <nav id="site-nav" class="nav" [class.nav--open]="menuOpen()" aria-label="Main">
+      <ul role="list">
+        @for (link of links; track link.path) {
+          <li>
+            <a
+              class="nav-link"
+              [routerLink]="link.path"
+              routerLinkActive="nav-link--active"
+              ariaCurrentWhenActive="page"
+              [routerLinkActiveOptions]="{ exact: link.exact }"
+              >{{ link.label }}</a
+            >
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <form
+      id="site-search"
+      class="search"
+      [class.search--open]="searchOpen()"
+      role="search"
+      (submit)="search($event, q)"
+    >
+      <label class="visually-hidden" for="site-search-q">Search books</label>
+      <app-icon class="search-icon" name="search" [size]="16" />
+      <input
+        #q
+        id="site-search-q"
+        class="search-input"
+        type="search"
+        name="q"
+        autocomplete="off"
+        [placeholder]="text.searchPlaceholder"
+      />
+    </form>
+
+    <div class="actions">
+      <button
+        type="button"
+        class="icon-btn search-btn"
+        aria-controls="site-search"
+        [attr.aria-expanded]="searchOpen()"
+        [attr.aria-label]="searchOpen() ? 'Close search' : 'Search'"
+        (click)="toggleSearch()"
+      >
+        <app-icon [name]="searchOpen() ? 'close' : 'search'" [size]="18" />
+      </button>
+      <a class="icon-btn help" routerLink="/help" [attr.aria-label]="text.help">
+        <app-icon name="help" [size]="20" />
+      </a>
+      <a class="action" routerLink="/account/details">
+        <app-icon name="user" [size]="20" />
+        <span class="action-label">{{ text.account }}</span>
+      </a>
+      <a class="action" routerLink="/cart" [attr.aria-label]="text.cart + ', ' + cart.count() + ' items'">
+        <app-icon name="cart" [size]="20" />
+        <span class="action-label" aria-hidden="true">{{ text.cart }}</span>
+        @if (cart.count() > 0) {
+          <span class="badge" aria-hidden="true">{{ cart.count() }}</span>
+        }
+      </a>
+    </div>
+  </div>
+</header>
