@@ -52,6 +52,9 @@ The full plan is in `docs/PLAN.md`. Read the relevant sections before starting e
 - Do not start subagents unless I ask.
 - While working, run only the tests for what you changed; run the full test suite and build once at the end.
 - Ask at most one round of questions per step, and keep the final summary short: what changed, what's left, decisions needed.
+- If the same error, failing test or build problem survives two fix attempts, stop. Explain the root cause you suspect, what you tried, and the options, then wait for me.
+- Never change or delete a test, weaken a type, or add `any` or a ts-ignore just to make a failure go away.
+- If a command hangs or a task is taking far longer than the step should, stop and tell me instead of retrying.
 
 ## Skills
 - Apply the andrej-karpathy-skills:karpathy-guidelines skill on every coding step.
